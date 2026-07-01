@@ -12,7 +12,9 @@ import OrderModal from './components/OrderModal.jsx'
 import Toast from './components/Toast.jsx'
 import { getOrders, saveOrder } from './utils/storage.js'
 import { pricingPlans } from './data/siteData.js'
-
+import HeritageTimeline from './components/HeritageTimeline.jsx'
+import EditionsShowcase from './components/EditionsShowcase.jsx'
+import ComparisonTable from './components/ComparisonTable.jsx'
 export default function App() {
   const [selectedPlan, setSelectedPlan] = useState(null)
   const [orders, setOrders] = useState(() => getOrders())
@@ -40,12 +42,25 @@ export default function App() {
       <Navbar onOrder={() => handleSelectPlan('founder')} />
       <main>
         <Hero onOrder={() => handleSelectPlan('founder')} />
+
         <Story />
+
+        <HeritageTimeline />
+
         <Features />
-        <BrickGame onUnlock={() => handleSelectPlan('founder')} />
-        <Pricing onSelectPlan={handleSelectPlan} />
-        <BusinessPanel orders={orders} revenue={revenue} />
-        <Testimonials />
+
+        <EditionsShowcase onSelectPlan={handleSelectPlan} />
+
+        <ComparisonTable />
+
+       <BrickGame onUnlock={() => handleSelectPlan('founder')} />
+
+       <Pricing onSelectPlan={handleSelectPlan} />
+
+       <BusinessPanel orders={orders} revenue={revenue} />
+
+       <Testimonials />
+
         <FinalCTA onOrder={() => handleSelectPlan('founder')} />
       </main>
       {selectedPlan && (
